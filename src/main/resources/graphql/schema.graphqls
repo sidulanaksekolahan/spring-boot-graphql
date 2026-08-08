@@ -1,0 +1,26 @@
+# Sebagai request DTO (Data Transfer Object) untuk produk.
+input ProductReqDto {
+    name: String!
+    description: String
+    price: Float!
+}
+
+# Sebagai response DTO (Data Transfer Object) untuk produk.
+type ProductResDto {
+    name: String!
+    description: String
+    price: Float!
+}
+
+# Untuk membaca data.
+type Query {
+    products: [ProductResDto!]!
+    product(id:ID!): ProductResDto
+}
+
+# Untuk mengubah data.
+type Mutation {
+    createProduct(input: ProductReqDto!): ProductResDto!
+    updateProduct(id: ID!, reqDto: ProductReqDto!): ProductResDto!
+    deleteProduct(id: ID!): Boolean!
+}
